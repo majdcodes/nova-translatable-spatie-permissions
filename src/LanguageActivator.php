@@ -177,7 +177,7 @@ class LanguageActivator extends Field
 				$model->unsetRelation('translation');
 			}
 
-			$model->translate($localeCode)->{$requestAttribute} = $value;
+			$model->translateOrNew($localeCode)->{$requestAttribute} = $value;
 		}
     }
 }
