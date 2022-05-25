@@ -5,7 +5,7 @@
 			v-for="(field_locale, locale) in field.fields"
 			:key="locale"
 			v-text="locale"
-			class="text-sm uppercase pr-1 text-gray-400"
+			class="text-xs uppercase pr-1 text-gray-400"
 			:class="{ 'font-bold': field_locale.value, 'text-gray-800': field_locale.value }"
 		></span>
 	</div>
@@ -32,3 +32,10 @@
 
     }
 </script>
+<style lang="scss">
+.pr-1 {
+	& + .pr-1 {
+		margin-left: 2px;
+	}
+}
+</style>
