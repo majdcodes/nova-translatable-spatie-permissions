@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="w-full pt-2 px-8 -mb-6 relative z-10">
+        <div class="w-full pt-2 px-8 relative z-10">
             <a
                 class="inline-block cursor-pointer mr-2 animate-text-color select-none text-xs"
                 :class="{ 'text-60': localeKey !== currentLocale, 'text-primary': localeKey === currentLocale, 'font-bold': localeKey === currentLocale }"
@@ -85,3 +85,8 @@
 		}
 	}
 </script>
+<style>
+.bullup {
+	margin-bottom: -24px;
+}
+</style>
