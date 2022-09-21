@@ -145,6 +145,10 @@ class Translatable extends Field
 					}
 				}
 			}
+		
+			if (!empty($value) && is_string($value) && is_array(json_decode($value, true))) {
+				$value = json_decode($value);
+			}
 
 //            if (is_null($value)){
 //                continue;
