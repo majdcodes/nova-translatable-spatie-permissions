@@ -26,7 +26,7 @@ class Translatable extends Field
 	/**
 	 * Create a new field.
 	 */
-	public function __construct($field)
+	public function __construct(Field $field)
 	{
 		parent::__construct($field->name, $field->attribute, $field->resolveCallback);
 
