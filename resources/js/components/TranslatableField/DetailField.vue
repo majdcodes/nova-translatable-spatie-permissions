@@ -1,7 +1,7 @@
 <template>
     <div class="-mx-6 px-6 py-2 md:py-0 space-y-2 md:space-y-0 border-t border-gray-100 dark:border-gray-700">
 	    <div>
-			<div v-if="locales.length > 1" class="w-full pt-2 -mb-2 relative z-10">
+			<div v-if="Object.keys(locales).length > 1" class="w-full pt-2 -mb-2 relative z-10">
 				<a
 					class="inline-block cursor-pointer mr-2 animate-text-color select-none text-xs"
 					:class="{ 'text-60': localeKey !== currentLocale, 'text-primary': localeKey === currentLocale, 'font-bold': localeKey === currentLocale }"
