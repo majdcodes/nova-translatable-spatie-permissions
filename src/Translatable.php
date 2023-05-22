@@ -3,6 +3,7 @@
 namespace Kreatorij\Nova\Fields;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Log;
 use Laravel\Nova\Fields\Field;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
@@ -141,6 +142,10 @@ class Translatable extends Field
 
 			if (!empty($value) && is_string($value) && is_array(json_decode($value, true))) {
 				$value = json_decode($value);
+
+				if (is_object($value)) {
+					$value = json_encode($value);
+				}
 			}
 
 			//            if (is_null($value)){
