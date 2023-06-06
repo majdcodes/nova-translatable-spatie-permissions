@@ -6,7 +6,7 @@
 			:key="locale"
 			v-text="locale"
 			class="text-xs uppercase pr-1 text-gray-400"
-			:class="{ 'font-bold': field_locale.value, 'text-gray-800': field_locale.value }"
+			:class="{ 'font-bold': field_locale.value, 'text-gray-800 dark:text-white': field_locale.value }"
 		></span>
 	</div>
 
