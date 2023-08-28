@@ -1,14 +1,31 @@
 <template>
     <div>
-        <div v-if="Object.keys(locales).length > 1" class="w-full pt-2 px-8 relative z-10 bullup">
-            <a
-                class="inline-block cursor-pointer mr-2 animate-text-color select-none text-xs"
-                :class="{ 'text-60': localeKey !== currentLocale, 'text-primary': localeKey === currentLocale, 'font-bold': localeKey === currentLocale }"
-                :key="`a-${localeKey}`"
-                v-for="(locale, localeKey) in locales"
-                @click="changeLocale(localeKey)"
-				v-text="locale"
-            />
+        <div v-if="Object.keys(locales).length > 1" class="w-full pt-2 px-8 relative z-10 bullup flex justify-between">
+	        <span>
+	            <a
+	                class="inline-block cursor-pointer mr-2 animate-text-color select-none text-xs"
+	                :class="{ 'text-60': localeKey !== currentLocale, 'text-primary': localeKey === currentLocale, 'font-bold': localeKey === currentLocale }"
+	                :key="`a-${localeKey}`"
+	                v-for="(locale, localeKey) in locales"
+	                @click="changeLocale(localeKey)"
+					v-text="locale"
+	            />
+	        </span>
+	        <small v-if="this.field.canCopy">
+		        Copy current to ...
+		        <template
+			        v-for="(locale, localeKey) in locales"
+			        :key="`copy-${localeKey}`"
+		        >
+			        <button
+				        v-if="localeKey !== currentLocale"
+				        type="button"
+				        v-text="locale"
+				        class="inline-block mr-1"
+				        @click="copyContent(localeKey)"
+			        />
+		        </template>
+	        </small>
         </div>
 
         <template
@@ -51,8 +68,10 @@
              */
             setInitialValue() {
                 Object.values(this.fields).forEach(f => {
-                    let field = this.$refs['field-' + f.attribute][0];
-                    field.setInitialValue();
+                    let field = this.$refs['field-' + f.attribute];
+					if (field) {
+						field[0].setInitialValue();
+					}
                 });
             },
 
@@ -64,6 +83,12 @@
 			syncChangeLocale(locale) {
 				this.currentLocale = locale;
 			},
+
+	        copyContent(locale) {
+		        let fieldFrom = this.$refs['field-' + this.fields[this.currentLocale].attribute][0];
+		        let fieldTo = this.$refs['field-' + this.fields[locale].attribute][0];
+				fieldTo.value = fieldFrom.currentField.value
+	        },
 
             /**
              * Fill the given FormData object with the field's internal value.

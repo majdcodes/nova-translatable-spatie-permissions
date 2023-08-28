@@ -78,6 +78,11 @@ class Translatable extends Field
 		$resource->setDefaultLocale($defaultLocale);
 	}
 
+	public function canCopy()
+	{
+		return $this->withMeta(['canCopy' => true]);
+	}
+
 	/**
 	 * Resolve the given attribute from the given resource.
 	 *
