@@ -87,7 +87,7 @@
 	        copyContent(locale) {
 		        let fieldFrom = this.$refs['field-' + this.fields[this.currentLocale].attribute][0];
 		        let fieldTo = this.$refs['field-' + this.fields[locale].attribute][0];
-				fieldTo.value = fieldFrom.currentField.value
+				fieldTo.value = fieldFrom.value
 	        },
 
             /**
