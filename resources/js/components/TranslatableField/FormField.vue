@@ -11,7 +11,10 @@
 					v-text="locale"
 	            />
 	        </span>
-	        <small v-if="this.field.canCopy">
+	        <small
+		        v-if="this.field.canCopy"
+		        class="inline-block mb-1"
+	        >
 		        Copy current to ...
 		        <template
 			        v-for="(locale, localeKey) in locales"
@@ -87,7 +90,11 @@
 	        copyContent(locale) {
 		        let fieldFrom = this.$refs['field-' + this.fields[this.currentLocale].attribute][0];
 		        let fieldTo = this.$refs['field-' + this.fields[locale].attribute][0];
-				fieldTo.value = fieldFrom.value
+				if (fieldTo.copyContent && typeof fieldTo.copyContent === 'function') {
+					fieldTo.copyContent(fieldFrom.value)
+				} else {
+					fieldTo.value = fieldFrom.value
+				}
 	        },
 
             /**
