@@ -1,3 +1,5 @@
+# Added support with spatie/laravel-permission
+
 # Nova Translatable Field and Language Activator
 Adds the ability to show and edit translated fields created with [astrotomic/laravel-translatable](https://github.com/Astrotomic/laravel-translatable) package. This is a fork of [soluzione-software/nova-translatable-field](https://github.com/soluzione-software/nova-translatable-field). It makes Boolean fields translatable, works on File fields, CKeditor, ... Language switching is synced on all fields by default.
 
